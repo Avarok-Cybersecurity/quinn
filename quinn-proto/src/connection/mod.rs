@@ -1224,6 +1224,7 @@ impl Connection {
                     debug!("path validation failed");
                     if let Some((_, prev)) = self.prev_path.take() {
                         self.path = prev;
+                        self.set_loss_detection_timer(now);
                     }
                     self.path.challenge = None;
                     self.path.challenge_pending = false;
