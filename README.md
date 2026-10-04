@@ -1,3 +1,11 @@
+> **Avarok-Cybersecurity fork.** Branch `citadel/0.11.19-backport-2660` is quinn-proto 0.11.19
+> plus one upstream commit, quinn-rs/quinn#2660 ("set loss detection timer on path validation
+> failure", fixing #2658). Without it a failed path validation leaves the loss-detection timer on
+> the abandoned path, and debug builds panic in `pto_time_and_space`
+> (`!self.peer_completed_address_validation()`); the Citadel SDK's relay-fallback test hit it
+> under load. #2660 is on quinn `main` (0.12) only. Drop this fork, and its `[patch.crates-io]`
+> entries, as soon as quinn-proto 0.11.20+ carries the fix or Citadel moves to quinn 0.12.
+
 <h1 align="center"><img width="500" src="https://raw.githubusercontent.com/quinn-rs/quinn/51a3cea225670757cb844a342428e4e1341d9f13/docs/thumbnail.svg" /></h1>
 
 [![Documentation](https://docs.rs/quinn/badge.svg)](https://docs.rs/quinn/)
